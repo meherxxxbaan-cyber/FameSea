@@ -4,56 +4,74 @@ import { Footer } from "@/components/footer";
 import { ListingCard } from "@/components/listing-card";
 import { PlatformIcon } from "@/components/platform-icons";
 import { SEED_LISTINGS } from "@/lib/seed-data";
-import { PLATFORM_GRADIENTS, formatNumber, formatPrice } from "@/lib/utils";
-import { ShieldCheck, TrendingUp, Star, DollarSign, Lock, Search } from "lucide-react";
+import { PLATFORM_GRADIENTS, formatNumber } from "@/lib/utils";
+import {
+  ShieldCheck, TrendingUp, Star, DollarSign, Lock,
+  Search, CheckCircle, ArrowRight, Clock, Zap,
+} from "lucide-react";
 
 const PLATFORMS = [
-  { name: "TikTok",    count: 13, slug: "tiktok"    },
-  { name: "Instagram", count: 12, slug: "instagram" },
-  { name: "YouTube",   count: 12, slug: "youtube"   },
-  { name: "X",         count: 7,  slug: "x"         },
-  { name: "Telegram",  count: 6,  slug: "telegram"  },
-  { name: "Discord",   count: 4,  slug: "discord"   },
-  { name: "Facebook",  count: 5,  slug: "facebook"  },
-  { name: "Twitch",    count: 3,  slug: "twitch"    },
+  { name: "TikTok",    slug: "tiktok",    count: 13 },
+  { name: "Instagram", slug: "instagram", count: 12 },
+  { name: "YouTube",   slug: "youtube",   count: 12 },
+  { name: "X",         slug: "x",         count: 7  },
+  { name: "Telegram",  slug: "telegram",  count: 6  },
+  { name: "Discord",   slug: "discord",   count: 4  },
+  { name: "Facebook",  slug: "facebook",  count: 5  },
+  { name: "Twitch",    slug: "twitch",    count: 3  },
 ];
 
-const FEATURED = SEED_LISTINGS.filter((l) => l.featured).slice(0, 6);
-const RECENT   = SEED_LISTINGS.slice(0, 8);
+const FEATURED    = SEED_LISTINGS.filter((l) => l.featured).slice(0, 6);
+const RECENT      = SEED_LISTINGS.slice(0, 8);
+const TOTAL_VALUE = SEED_LISTINGS.reduce((s, l) => s + l.price, 0);
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#f8f9fa] flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: "#F8F9FB" }}>
       <Navbar />
 
-      {/* ── Hero — search first ─────────────────────────────────────────── */}
+      {/* ─── HERO ──────────────────────────────────────────────────────── */}
       <section className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-3">
-            Buy & Sell Social Media Accounts
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-14 pb-12">
+          {/* Trust pill */}
+          <div className="flex justify-center mb-5">
+            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[13px] font-semibold px-4 py-1.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              3,842 accounts safely transferred · $14M+ in volume
+            </div>
+          </div>
+
+          <h1 className="text-center text-4xl sm:text-[52px] font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-4">
+            Skip the grind.<br />
+            <span className="text-indigo-600">Buy an audience today.</span>
           </h1>
-          <p className="text-lg text-slate-500 mb-8">
-            5,000+ verified accounts · Stripe escrow · 7-day buyer protection
+          <p className="text-center text-[17px] text-slate-500 mb-8 max-w-xl mx-auto leading-relaxed">
+            Browse 5,000+ verified TikTok, Instagram, YouTube, X and Telegram accounts.
+            Every transaction is protected by Stripe escrow.
           </p>
 
-          {/* Search bar */}
+          {/* Search hero */}
           <Link href="/marketplace" className="block max-w-2xl mx-auto">
-            <div className="flex items-center gap-3 bg-slate-50 border-2 border-slate-200 hover:border-indigo-400 rounded-2xl px-5 py-4 cursor-pointer transition-all shadow-sm hover:shadow-md">
-              <Search className="h-5 w-5 text-slate-400 flex-shrink-0" />
-              <span className="text-slate-400 text-base flex-1 text-left">Search by platform, niche, username…</span>
-              <span className="bg-indigo-600 text-white text-sm font-semibold px-4 py-1.5 rounded-xl flex-shrink-0">Search</span>
+            <div className="flex items-center gap-3 bg-slate-50 border-2 border-slate-200 hover:border-indigo-400 rounded-2xl px-5 py-3.5 cursor-pointer transition-all shadow-sm hover:shadow-lg group">
+              <Search className="h-5 w-5 text-slate-400 flex-shrink-0 group-hover:text-indigo-400 transition-colors" />
+              <span className="text-[15px] text-slate-400 flex-1 text-left">
+                Search by platform, niche, username, location…
+              </span>
+              <span className="bg-indigo-600 text-white text-[13px] font-bold px-4 py-1.5 rounded-xl flex-shrink-0 group-hover:bg-indigo-700 transition-colors">
+                Search →
+              </span>
             </div>
           </Link>
 
-          {/* Trust strip */}
-          <div className="flex items-center justify-center gap-6 mt-6 flex-wrap">
+          {/* Trust signals */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6">
             {[
-              { icon: <ShieldCheck className="h-4 w-4 text-emerald-500" />, text: "Escrow protected" },
-              { icon: <Star className="h-4 w-4 text-amber-400 fill-amber-400" />, text: "4.98★ rating" },
-              { icon: <TrendingUp className="h-4 w-4 text-indigo-500" />, text: "3,842 transfers" },
-              { icon: <Lock className="h-4 w-4 text-slate-400" />, text: "7-day inspection" },
+              { icon: <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />, text: "Stripe Escrow Protected"  },
+              { icon: <Star className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />, text: "4.98★ Average Rating" },
+              { icon: <Clock className="h-3.5 w-3.5 text-indigo-500" />, text: "7-Day Buyer Inspection"     },
+              { icon: <CheckCircle className="h-3.5 w-3.5 text-blue-500" />, text: "All Sellers KYC Verified" },
             ].map((s) => (
-              <div key={s.text} className="flex items-center gap-1.5 text-sm text-slate-500">
+              <div key={s.text} className="flex items-center gap-1.5 text-[12.5px] text-slate-500">
                 {s.icon}{s.text}
               </div>
             ))}
@@ -61,100 +79,114 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Platform pills ─────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
+      {/* ─── PLATFORM TABS ─────────────────────────────────────────────── */}
+      <div className="bg-white border-b border-slate-200 sticky top-[60px] z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex gap-1.5 overflow-x-auto scrollbar-hide py-2.5">
             <Link href="/marketplace"
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-600 text-white text-sm font-semibold flex-shrink-0 hover:bg-indigo-700 transition-colors">
-              All Platforms
+              className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-600 text-white text-[13px] font-semibold flex-shrink-0 hover:bg-indigo-700 transition-colors">
+              <Zap className="h-3.5 w-3.5" /> All Accounts
             </Link>
             {PLATFORMS.map((p) => (
               <Link key={p.name} href={`/platform/${p.slug}`}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium flex-shrink-0 transition-colors">
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-[13px] font-medium flex-shrink-0 transition-colors group">
                 <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ background: PLATFORM_GRADIENTS[p.name] }}>
                   <PlatformIcon platform={p.name} size={12} />
                 </span>
                 {p.name}
-                <span className="text-slate-400 text-xs">{p.count}</span>
+                <span className="text-slate-400 text-[11px] group-hover:text-slate-600">{p.count}</span>
               </Link>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full space-y-10">
 
-        {/* ── Featured listings ─────────────────────────────────────────── */}
-        <div className="mb-10">
-          <div className="flex items-center justify-between mb-5">
-            <div>
-              <h2 className="text-xl font-bold text-slate-900">⭐ Featured Accounts</h2>
-              <p className="text-sm text-slate-500 mt-0.5">Hand-picked, verified by our team</p>
+        {/* ─── STATS ROW ────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { icon: <DollarSign className="h-5 w-5 text-emerald-500" />, bg: "bg-emerald-50", val: "$14M+",  label: "Total Volume",       sub: "Traded on platform"     },
+            { icon: <TrendingUp className="h-5 w-5 text-indigo-500" />,  bg: "bg-indigo-50",  val: "3,842",  label: "Completed Transfers", sub: "Buyers confirmed"       },
+            { icon: <Star className="h-5 w-5 text-amber-400" />,         bg: "bg-amber-50",   val: "4.98★",  label: "Avg Rating",          sub: "From 1,200+ reviews"    },
+            { icon: <Lock className="h-5 w-5 text-slate-500" />,         bg: "bg-slate-50",   val: "100%",   label: "Escrow Protected",    sub: "Every transaction"      },
+          ].map((s) => (
+            <div key={s.label} className="bg-white rounded-2xl border border-slate-200 p-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+              <div className={`w-9 h-9 ${s.bg} rounded-xl flex items-center justify-center mb-3`}>{s.icon}</div>
+              <div className="text-xl font-extrabold text-slate-900">{s.val}</div>
+              <div className="text-[12px] font-semibold text-slate-700 mt-0.5">{s.label}</div>
+              <div className="text-[11px] text-slate-400">{s.sub}</div>
             </div>
-            <Link href="/marketplace?featured=true" className="text-sm text-indigo-600 font-medium hover:underline">
-              View all →
+          ))}
+        </div>
+
+        {/* ─── FEATURED ─────────────────────────────────────────────────── */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-[18px] font-bold text-slate-900">⭐ Featured Accounts</h2>
+              <p className="text-[13px] text-slate-400 mt-0.5">Hand-picked and verified by our team</p>
+            </div>
+            <Link href="/marketplace?featured=true"
+              className="flex items-center gap-1 text-[13px] text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+              View all <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FEATURED.map((l) => <ListingCard key={l.id} listing={l} />)}
           </div>
-        </div>
+        </section>
 
-        {/* ── Stats bar ─────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
-          {[
-            { icon: <DollarSign className="h-5 w-5 text-emerald-500" />, val: "$14M+",  label: "Total Volume",       color: "text-emerald-600" },
-            { icon: <TrendingUp className="h-5 w-5 text-indigo-500" />,  val: "3,842",  label: "Completed Transfers",color: "text-indigo-600"  },
-            { icon: <Star className="h-5 w-5 text-amber-400" />,         val: "4.98★",  label: "Average Rating",     color: "text-amber-600"   },
-            { icon: <ShieldCheck className="h-5 w-5 text-slate-400" />,  val: "100%",   label: "Escrow Protected",   color: "text-slate-700"   },
-          ].map((s) => (
-            <div key={s.label} className="bg-white rounded-2xl border border-slate-200 p-5 flex items-center gap-4 shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center flex-shrink-0">
-                {s.icon}
+        {/* ─── HOW IT WORKS ─────────────────────────────────────────────── */}
+        <section className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+          <div className="grid grid-cols-1 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+            {[
+              { n: "1", icon: "🔍", title: "Browse & Filter",   desc: "Search by platform, niche, followers, price and location" },
+              { n: "2", icon: "🔒", title: "Secure Checkout",   desc: "Pay via Stripe. Funds are held in escrow — never released until you confirm" },
+              { n: "3", icon: "🔑", title: "Receive Access",    desc: "Seller transfers credentials within 24 hours of payment" },
+              { n: "4", icon: "✅", title: "Confirm & Done",    desc: "7 days to verify. Release funds when satisfied. Full refund if issues" },
+            ].map((s) => (
+              <div key={s.n} className="p-5 flex flex-col gap-2">
+                <div className="flex items-center gap-3">
+                  <span className="w-7 h-7 rounded-full bg-indigo-600 text-white text-[12px] font-bold flex items-center justify-center flex-shrink-0">{s.n}</span>
+                  <span className="text-2xl">{s.icon}</span>
+                </div>
+                <div className="font-bold text-[14px] text-slate-900">{s.title}</div>
+                <div className="text-[12.5px] text-slate-500 leading-relaxed">{s.desc}</div>
               </div>
-              <div>
-                <div className={`text-xl font-extrabold ${s.color}`}>{s.val}</div>
-                <div className="text-xs text-slate-400">{s.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </section>
 
-        {/* ── Recent listings ───────────────────────────────────────────── */}
-        <div className="mb-10">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold text-slate-900">🆕 Recently Listed</h2>
-            <Link href="/marketplace?sort=newest" className="text-sm text-indigo-600 font-medium hover:underline">
-              View all →
+        {/* ─── RECENT ────────────────────────────────────────────────────── */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-[18px] font-bold text-slate-900">🆕 Just Listed</h2>
+            <Link href="/marketplace?sort=newest"
+              className="flex items-center gap-1 text-[13px] text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+              Browse all <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {RECENT.map((l) => <ListingCard key={l.id} listing={l} />)}
           </div>
-        </div>
+        </section>
 
-        {/* ── How it works — minimal ─────────────────────────────────────── */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h2 className="text-lg font-bold text-slate-900 mb-5 text-center">How it works</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-            {[
-              { n: "1", title: "Browse",         desc: "Filter by platform, niche & price" },
-              { n: "2", title: "Pay Escrow",      desc: "Stripe holds funds securely"       },
-              { n: "3", title: "Receive Access",  desc: "Seller transfers within 24h"       },
-              { n: "4", title: "Confirm & Done",  desc: "7 days to inspect before release"  },
-            ].map((s) => (
-              <div key={s.n} className="text-center">
-                <div className="w-9 h-9 rounded-full bg-indigo-600 text-white font-bold text-sm flex items-center justify-center mx-auto mb-2">
-                  {s.n}
-                </div>
-                <div className="font-semibold text-slate-900 text-sm">{s.title}</div>
-                <div className="text-xs text-slate-500 mt-0.5">{s.desc}</div>
-              </div>
-            ))}
+        {/* ─── SELL CTA ──────────────────────────────────────────────────── */}
+        <section className="relative overflow-hidden rounded-2xl bg-indigo-600 p-8 sm:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.12),transparent)]" />
+          <div className="relative flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-extrabold text-white mb-1">Have an account to sell?</h2>
+              <p className="text-indigo-200 text-[15px]">Free to list · 3% only on sale · 50,000+ buyers waiting</p>
+            </div>
+            <Link href="/sell"
+              className="flex items-center gap-2 bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl hover:bg-indigo-50 transition-colors flex-shrink-0 text-[15px]">
+              List Your Account <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-        </div>
+        </section>
       </main>
 
       <Footer />

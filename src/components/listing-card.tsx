@@ -6,162 +6,164 @@ import type { Listing } from "@/lib/seed-data";
 import { OfferModal } from "@/components/offer-modal";
 import { PlatformIcon } from "@/components/platform-icons";
 import { useWatchlist } from "@/hooks/useWatchlist";
-import { CheckCircle, TrendingUp, Users, DollarSign, ShoppingBag, Zap, Star, GitCompare, Heart, ImageIcon } from "lucide-react";
+import { CheckCircle, TrendingUp, Users, DollarSign, ShoppingBag, Zap, Star, GitCompare, Heart, BarChart2 } from "lucide-react";
 
-interface ListingCardProps {
+interface Props {
   listing: Listing;
   compareSelected?: boolean;
-  onCompareToggle?: (listing: Listing) => void;
+  onCompareToggle?: (l: Listing) => void;
   showCompare?: boolean;
 }
 
-export function ListingCard({ listing, compareSelected, onCompareToggle, showCompare }: ListingCardProps) {
+export function ListingCard({ listing, compareSelected, onCompareToggle, showCompare }: Props) {
   const [offerOpen, setOfferOpen] = useState(false);
   const [offerSent, setOfferSent] = useState(false);
   const { toggle, has, hydrated } = useWatchlist();
   const saved = hydrated && has(listing.id);
+  const multipleOfIncome = listing.monthly_income > 0
+    ? (listing.price / listing.monthly_income).toFixed(1)
+    : null;
 
   return (
     <>
-      <div className={`bg-white rounded-2xl overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1 hover:shadow-xl border ${compareSelected ? "border-indigo-400 ring-2 ring-indigo-100 shadow-lg" : "border-slate-200 shadow-sm"}`}>
+      <div className={`group bg-white rounded-2xl overflow-hidden flex flex-col transition-all duration-200 cursor-pointer hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 ${
+        compareSelected
+          ? "ring-2 ring-indigo-500 shadow-[0_0_0_3px_rgba(99,102,241,0.15)]"
+          : "shadow-[0_1px_4px_rgba(0,0,0,0.08)] border border-slate-200"
+      }`}>
 
-        {/* Platform header - clean gradient with real icon */}
-        <div className="relative h-[88px] flex items-center px-4 gap-3" style={{ background: listing.gradient }}>
-          {/* Overlay for readability */}
+        {/* Platform header */}
+        <div className="relative h-20 flex items-center px-4 gap-3 overflow-hidden flex-shrink-0"
+          style={{ background: listing.gradient }}>
           <div className="absolute inset-0 bg-black/20" />
 
-          {/* Platform icon circle */}
-          <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 flex-shrink-0">
-            <PlatformIcon platform={listing.platform} size={22} />
+          {/* Icon */}
+          <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/25 flex-shrink-0">
+            <PlatformIcon platform={listing.platform} size={20} />
           </div>
 
-          {/* Username + platform */}
+          {/* Info */}
           <div className="relative z-10 flex-1 min-w-0">
-            <div className="text-white font-bold text-base leading-tight truncate">{listing.username}</div>
-            <div className="text-white/70 text-xs mt-0.5">{listing.platform} · {listing.niche}</div>
+            <div className="text-white font-bold text-sm leading-tight truncate">{listing.username}</div>
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <span className="text-white/65 text-[11px]">{listing.platform}</span>
+              <span className="text-white/40 text-[11px]">·</span>
+              <span className="text-white/65 text-[11px]">{listing.niche}</span>
+            </div>
           </div>
 
-          {/* Action buttons */}
-          <div className="relative z-10 flex items-center gap-1.5 flex-shrink-0">
+          {/* Seller flag + actions */}
+          <div className="relative z-10 flex items-center gap-1 flex-shrink-0">
+            <span className="text-base" title={listing.seller_country}>{listing.seller_flag}</span>
             {listing.featured && (
-              <span className="bg-amber-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">Featured</span>
+              <span className="bg-amber-400 text-amber-900 text-[9px] font-bold px-1.5 py-0.5 rounded-full ml-0.5">TOP</span>
             )}
             <button
-              onClick={(e) => { e.preventDefault(); toggle(listing.id); }}
-              className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${saved ? "bg-red-500 text-white" : "bg-white/20 text-white hover:bg-white/30"}`}
-            >
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggle(listing.id); }}
+              className={`ml-1 w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
+                saved ? "bg-red-500 text-white" : "bg-white/20 text-white/80 hover:bg-white/30"
+              }`}>
               <Heart className={`h-3.5 w-3.5 ${saved ? "fill-current" : ""}`} />
             </button>
             {showCompare && (
               <button
-                onClick={(e) => { e.preventDefault(); onCompareToggle?.(listing); }}
-                className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${compareSelected ? "bg-indigo-500 text-white" : "bg-white/20 text-white hover:bg-white/30"}`}
-              >
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCompareToggle?.(listing); }}
+                className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
+                  compareSelected ? "bg-indigo-500 text-white" : "bg-white/20 text-white/80 hover:bg-white/30"
+                }`}>
                 <GitCompare className="h-3.5 w-3.5" />
               </button>
             )}
           </div>
         </div>
 
-        {/* Image preview strip - shows if listing has images */}
-        <div className="flex gap-1 px-4 pt-3">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="flex-1 h-14 bg-slate-100 rounded-lg flex items-center justify-center border border-slate-200 overflow-hidden">
-              <ImageIcon className="h-4 w-4 text-slate-300" />
+        <Link href={`/listing/${listing.id}`} className="flex-1 flex flex-col">
+          <div className="p-4 flex-1 flex flex-col gap-3">
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { icon: <Users className="h-3 w-3" />,    val: formatNumber(listing.followers),      label: "Followers", green: false },
+                { icon: <DollarSign className="h-3 w-3" />,val: formatPrice(listing.monthly_income),  label: "Mo. Income", green: true  },
+                { icon: <TrendingUp className="h-3 w-3" />,val: `${listing.engagement_rate}%`,        label: "Engagement",green: false },
+              ].map((s) => (
+                <div key={s.label} className="bg-slate-50 rounded-xl p-2.5 text-center">
+                  <div className={`flex justify-center mb-1 ${s.green ? "text-emerald-400" : "text-slate-400"}`}>{s.icon}</div>
+                  <div className={`text-sm font-bold ${s.green ? "text-emerald-600" : "text-slate-900"}`}>{s.val}</div>
+                  <div className="text-[10px] text-slate-400 mt-0.5">{s.label}</div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Stats */}
-        <div className="px-4 pt-3 pb-0 grid grid-cols-3 gap-2">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
-              <Users className="h-3 w-3" />
+            {/* Trust badges */}
+            <div className="flex flex-wrap gap-1.5">
+              {listing.verified_income && (
+                <span className="flex items-center gap-1 text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <CheckCircle className="h-2.5 w-2.5" /> Verified
+                </span>
+              )}
+              {listing.monetized && (
+                <span className="flex items-center gap-1 text-[10px] font-semibold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200">
+                  <Zap className="h-2.5 w-2.5" /> Monetized
+                </span>
+              )}
+              {listing.tiktok_shop_eligible && (
+                <span className="flex items-center gap-1 text-[10px] font-semibold bg-violet-50 text-violet-700 px-2 py-0.5 rounded-full border border-violet-200">
+                  <ShoppingBag className="h-2.5 w-2.5" /> Shop
+                </span>
+              )}
+              {listing.age_years >= 3 && (
+                <span className="flex items-center gap-1 text-[10px] font-semibold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full border border-amber-200">
+                  ⏱ {listing.age_years}yr account
+                </span>
+              )}
             </div>
-            <div className="text-sm font-bold text-slate-900">{formatNumber(listing.followers)}</div>
-            <div className="text-[10px] text-slate-400">Followers</div>
-          </div>
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
-              <DollarSign className="h-3 w-3" />
-            </div>
-            <div className="text-sm font-bold text-emerald-600">{formatPrice(listing.monthly_income)}</div>
-            <div className="text-[10px] text-slate-400">Mo. Income</div>
-          </div>
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
-              <TrendingUp className="h-3 w-3" />
-            </div>
-            <div className="text-sm font-bold text-slate-900">{listing.engagement_rate}%</div>
-            <div className="text-[10px] text-slate-400">Engagement</div>
-          </div>
-        </div>
 
-        {/* Badges */}
-        <div className="px-4 pt-2.5 flex flex-wrap gap-1">
-          {listing.verified_income && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full">
-              <CheckCircle className="h-2.5 w-2.5" /> Verified Income
-            </span>
-          )}
-          {listing.monetized && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full">
-              <Zap className="h-2.5 w-2.5" /> Monetized
-            </span>
-          )}
-          {listing.tiktok_shop_eligible && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full">
-              <ShoppingBag className="h-2.5 w-2.5" /> Shop
-            </span>
-          )}
-        </div>
-
-        {/* Seller + location */}
-        <div className="px-4 pt-2 flex items-center gap-1.5 text-xs text-slate-400">
-          <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-          <span className="font-medium text-slate-600">{listing.seller_rating}</span>
-          <span>·</span>
-          <span>{listing.seller_sales} sales</span>
-          <span>·</span>
-          <span className="truncate">{listing.location}</span>
-        </div>
-
-        {/* Price + CTA */}
-        <div className="p-4 mt-auto">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <div className="text-2xl font-extrabold text-slate-900">{formatPrice(listing.price)}</div>
-              <div className="text-[11px] text-slate-400">Min offer: {formatPrice(listing.minimum_offer)}</div>
+            {/* Seller info */}
+            <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-auto">
+              <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+              <span className="font-semibold text-slate-500">{listing.seller_rating}</span>
+              <span>·</span>
+              <span>{listing.seller_sales} sales</span>
+              <span>·</span>
+              <span className="font-medium text-slate-500">{listing.seller_name}</span>
+              <span className="ml-auto">{listing.seller_flag}</span>
             </div>
-            <Link href={`/listing/${listing.id}`} className="text-xs text-indigo-600 hover:underline font-medium">
-              View Details →
-            </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-2">
-            <Link
-              href={`/listing/${listing.id}`}
-              className="flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-2.5 rounded-xl transition-colors"
-            >
-              Buy Now
-            </Link>
-            <button
-              onClick={() => setOfferOpen(true)}
-              disabled={offerSent}
-              className="flex items-center justify-center border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-medium py-2.5 rounded-xl transition-colors disabled:opacity-60"
-            >
-              {offerSent ? "✓ Offered" : "Make Offer"}
-            </button>
+          {/* Price footer */}
+          <div className="px-4 pb-4 pt-0">
+            <div className="border-t border-slate-100 pt-3 flex items-center justify-between">
+              <div>
+                <div className="text-xl font-extrabold text-slate-900">{formatPrice(listing.price)}</div>
+                <div className="text-[10px] text-slate-400 mt-0.5">
+                  Min {formatPrice(listing.minimum_offer)}
+                  {multipleOfIncome && <span className="ml-1 text-indigo-500 font-medium">· {multipleOfIncome}× income</span>}
+                </div>
+              </div>
+              <div className="flex items-center gap-1 text-[11px] text-slate-400">
+                <BarChart2 className="h-3 w-3" />
+                {formatNumber(listing.avg_views)} avg views
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 mt-3">
+              <div className="flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white text-[13px] font-bold py-2.5 rounded-xl transition-colors">
+                Buy Now
+              </div>
+              <button
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOfferOpen(true); }}
+                disabled={offerSent}
+                className="flex items-center justify-center border-2 border-slate-200 hover:border-indigo-300 hover:text-indigo-700 text-slate-700 text-[13px] font-semibold py-2.5 rounded-xl transition-all disabled:opacity-60">
+                {offerSent ? "✓ Sent" : "Make Offer"}
+              </button>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
 
       {offerOpen && (
-        <OfferModal
-          listing={listing}
-          onClose={() => setOfferOpen(false)}
-          onSubmit={() => { setOfferSent(true); setOfferOpen(false); }}
-        />
+        <OfferModal listing={listing} onClose={() => setOfferOpen(false)}
+          onSubmit={() => { setOfferSent(true); setOfferOpen(false); }} />
       )}
     </>
   );
