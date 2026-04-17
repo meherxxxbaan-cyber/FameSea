@@ -1,54 +1,42 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ListingCard } from "@/components/listing-card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { PlatformIcon } from "@/components/platform-icons";
 import { SEED_LISTINGS } from "@/lib/seed-data";
-import { PLATFORMS, PLATFORM_GRADIENTS, PLATFORM_EMOJIS, formatNumber, formatPrice } from "@/lib/utils";
-import type { Platform } from "@/lib/utils";
+import { PLATFORM_GRADIENTS, formatNumber, formatPrice } from "@/lib/utils";
 import { ArrowRight, TrendingUp, Users, DollarSign, ChevronRight } from "lucide-react";
 
-interface Props {
-  params: Promise<{ slug: string }>;
+interface Props { params: Promise<{ slug: string }> }
+
+const PLATFORM_MAP: Record<string, string> = {
+  tiktok: "TikTok", instagram: "Instagram", youtube: "YouTube",
+  x: "X", telegram: "Telegram", discord: "Discord",
+  facebook: "Facebook", twitch: "Twitch",
+};
+
+const PLATFORM_INFO: Record<string, { tagline: string; description: string; why: string[] }> = {
+  TikTok:    { tagline: "The fastest-growing platform", description: "TikTok accounts offer explosive growth potential, viral reach, and some of the highest engagement rates in social media. TikTok Shop-eligible accounts generate passive income.", why: ["Avg engagement 8–15%", "TikTok Shop monetization", "Viral algorithm favors new owners", "Young 18–34 premium audience"] },
+  Instagram: { tagline: "The brand deal gold standard", description: "Instagram remains the top platform for influencer marketing. Established accounts command premium brand deals with Fashion, Beauty, and Fitness brands.", why: ["Brand deal rates $500–$10K/post", "Reels & Stories monetization", "Shoppable posts built-in", "Premium 25–45 demographic"] },
+  YouTube:   { tagline: "Evergreen content, recurring revenue", description: "YouTube channels provide stable recurring AdSense income. Evergreen content generates revenue for years after publishing.", why: ["AdSense CPM $5–$25+", "Revenue compounds over time", "Highest sponsorship rates per view", "YouTube Premium revenue share"] },
+  X:         { tagline: "High-value audiences, direct reach", description: "X accounts in Finance, Crypto and Tech niches have uniquely valuable high-income audiences. X Premium subscription revenue available.", why: ["Finance/Crypto CPM — highest on any platform", "X Premium subscription revenue", "Direct newsletter integration", "High-trust authority positioning"] },
+  Telegram:  { tagline: "The subscription revenue machine", description: "Telegram channels with subscription models are pure cash-flow businesses. Crypto signals and finance channels generate $2K–$15K/month in recurring subscriptions.", why: ["Fully recurring subscription revenue", "No algorithm — guaranteed reach", "Premium channel monetization", "Global audience, zero censorship risk"] },
+  Discord:   { tagline: "Community ownership at scale", description: "Discord servers with active communities are valuable assets for gaming brands, crypto projects, and online businesses seeking direct audience access.", why: ["Direct community access", "Subscription server monetization", "Bot and integration revenue", "High daily active user rate"] },
+  Facebook:  { tagline: "The largest audience in the world", description: "Facebook pages and groups with established audiences offer access to the world's largest social network, especially valuable for the 30+ demographic.", why: ["3 billion+ user platform", "Strong 30–55 demographic", "Facebook Marketplace integration", "Highest local business reach"] },
+  Twitch:    { tagline: "Live streaming community ownership", description: "Twitch channels with established audiences and affiliate/partner status generate recurring revenue from subscriptions, bits, and brand sponsorships.", why: ["Subscription + bits revenue", "Affiliate/Partner program income", "Very loyal live community", "Gaming brand deal potential"] },
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const platform = PLATFORM_MAP[slug.toLowerCase()];
+  if (!platform) return {};
+  return {
+    title: `${platform} Accounts for Sale | 69Swap`,
+    description: `Buy verified ${platform} accounts. Stripe escrow on every transaction. Browse listings by niche, followers, and price.`,
+  };
 }
-
-const PLATFORM_MAP: Record<string, Platform> = {
-  tiktok: "TikTok",
-  instagram: "Instagram",
-  youtube: "YouTube",
-  x: "X",
-  telegram: "Telegram",
-};
-
-const PLATFORM_INFO: Record<Platform, { tagline: string; description: string; why: string[] }> = {
-  TikTok: {
-    tagline: "The fastest-growing social platform",
-    description: "TikTok accounts offer explosive growth potential, viral reach, and some of the highest engagement rates in social media. Shop-eligible accounts can generate passive income through affiliate sales.",
-    why: ["Highest engagement rates (avg 8–15%)", "TikTok Shop monetization available", "Viral algorithm favors new owners", "Young demographic (18–34) — premium CPM"],
-  },
-  Instagram: {
-    tagline: "The gold standard for brand deals",
-    description: "Instagram remains the top platform for influencer marketing. Established accounts command premium brand deal rates with Fashion, Beauty, Fitness, and Lifestyle brands paying top dollar.",
-    why: ["Brand deal rates: $1K–$50K per post", "Reels & Stories monetization", "Shoppable posts built-in", "Premium 25–45 demographic"],
-  },
-  YouTube: {
-    tagline: "Evergreen content, recurring revenue",
-    description: "YouTube channels provide stable, recurring AdSense income that compounds over time. Evergreen content keeps generating views and revenue years after publishing.",
-    why: ["AdSense CPM: $5–$25+", "Revenue grows month-over-month", "Sponsorship rates highest per view", "YouTube Premium revenue share"],
-  },
-  X: {
-    tagline: "High-value audiences, direct reach",
-    description: "X (Twitter) accounts in Finance, Crypto, Tech, and News niches have uniquely valuable, high-income audiences that are hard to find elsewhere. Paid subscriptions via X Premium available.",
-    why: ["Finance/Crypto CPM: highest on any platform", "X Premium subscription revenue", "Direct newsletter integration", "High-trust authority positioning"],
-  },
-  Telegram: {
-    tagline: "The subscription revenue machine",
-    description: "Telegram channels with subscription models are pure cash-flow businesses. Crypto signals, finance, and premium content channels can generate $5K–$50K/month in recurring subscriptions.",
-    why: ["Subscription revenue: fully recurring", "No algorithm — guaranteed reach", "Premium channel monetization", "Global audience, zero censorship risk"],
-  },
-};
 
 export default async function PlatformPage({ params }: Props) {
   const { slug } = await params;
@@ -56,23 +44,21 @@ export default async function PlatformPage({ params }: Props) {
   if (!platform) notFound();
 
   const listings = SEED_LISTINGS.filter((l) => l.platform === platform);
-  const info = PLATFORM_INFO[platform];
-  const avgPrice = Math.round(listings.reduce((s, l) => s + l.price, 0) / listings.length);
-  const avgFollowers = Math.round(listings.reduce((s, l) => s + l.followers, 0) / listings.length);
-  const avgEngagement = (listings.reduce((s, l) => s + l.engagement_rate, 0) / listings.length).toFixed(1);
+  const info = PLATFORM_INFO[platform] || { tagline: "", description: "", why: [] };
+  const avgPrice = listings.length ? Math.round(listings.reduce((s, l) => s + l.price, 0) / listings.length) : 0;
+  const avgFollowers = listings.length ? Math.round(listings.reduce((s, l) => s + l.followers, 0) / listings.length) : 0;
+  const avgEngagement = listings.length ? (listings.reduce((s, l) => s + l.engagement_rate, 0) / listings.length).toFixed(1) : "0";
+  const gradient = PLATFORM_GRADIENTS[platform] || "#6366f1";
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
       {/* Hero */}
-      <section
-        className="relative overflow-hidden py-16"
-        style={{ background: PLATFORM_GRADIENTS[platform] }}
-      >
+      <section className="relative overflow-hidden py-14" style={{ background: gradient }}>
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <nav className="flex items-center gap-1.5 text-sm text-white/60 mb-6">
+          <nav className="flex items-center gap-1.5 text-sm text-white/60 mb-5">
             <Link href="/" className="hover:text-white">Home</Link>
             <ChevronRight className="h-3.5 w-3.5" />
             <Link href="/marketplace" className="hover:text-white">Marketplace</Link>
@@ -80,22 +66,24 @@ export default async function PlatformPage({ params }: Props) {
             <span className="text-white">{platform}</span>
           </nav>
 
-          <div className="flex items-center gap-4 mb-4">
-            <div className="text-5xl">{PLATFORM_EMOJIS[platform]}</div>
+          <div className="flex items-center gap-5 mb-6">
+            <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center border border-white/25 flex-shrink-0">
+              <PlatformIcon platform={platform} size={32} />
+            </div>
             <div>
               <h1 className="text-4xl font-extrabold text-white">{platform} Accounts for Sale</h1>
               <p className="text-white/70 mt-1">{info.tagline}</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mt-8 max-w-xl">
+          <div className="grid grid-cols-3 gap-4 max-w-lg">
             {[
-              { icon: <TrendingUp className="h-4 w-4" />, value: `${listings.length} listed`, label: "Available now" },
+              { icon: <TrendingUp className="h-4 w-4" />, value: `${listings.length}`, label: "Available now" },
               { icon: <Users className="h-4 w-4" />, value: formatNumber(avgFollowers), label: "Avg followers" },
               { icon: <DollarSign className="h-4 w-4" />, value: formatPrice(avgPrice), label: "Avg price" },
             ].map((s) => (
-              <div key={s.label} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                <div className="flex items-center gap-1.5 text-white/60 text-xs mb-1.5">{s.icon}{s.label}</div>
+              <div key={s.label} className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/20">
+                <div className="flex items-center gap-1.5 text-white/60 text-xs mb-1">{s.icon}{s.label}</div>
                 <div className="text-xl font-bold text-white">{s.value}</div>
               </div>
             ))}
@@ -103,75 +91,69 @@ export default async function PlatformPage({ params }: Props) {
         </div>
       </section>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12 w-full">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-10 w-full flex-1">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Sidebar info */}
-          <aside className="lg:col-span-1 space-y-5">
-            <div className="bg-white rounded-xl border border-slate-200 p-5">
-              <h3 className="font-bold text-slate-900 mb-3">Why {platform}?</h3>
+          <aside className="space-y-4">
+            <div className="bg-white rounded-2xl border border-slate-200 p-5">
+              <h3 className="font-bold text-slate-900 mb-3 text-sm">Why {platform}?</h3>
               <ul className="space-y-2.5">
                 {info.why.map((w) => (
                   <li key={w} className="flex items-start gap-2 text-sm text-slate-600">
-                    <span className="text-emerald-500 mt-0.5 flex-shrink-0">✓</span>
-                    {w}
+                    <span className="text-emerald-500 mt-0.5 flex-shrink-0">✓</span>{w}
                   </li>
                 ))}
               </ul>
             </div>
-
-            <div className="bg-white rounded-xl border border-slate-200 p-5">
-              <h3 className="font-bold text-slate-900 mb-2 text-sm">Market Stats</h3>
-              <div className="space-y-3 text-sm">
+            <div className="bg-white rounded-2xl border border-slate-200 p-5">
+              <h3 className="font-bold text-slate-900 mb-3 text-sm">Market Stats</h3>
+              <div className="space-y-2.5 text-sm">
                 {[
-                  { label: "Avg engagement", value: `${avgEngagement}%` },
-                  { label: "Avg price", value: formatPrice(avgPrice) },
-                  { label: "Avg followers", value: formatNumber(avgFollowers) },
-                  { label: "Listings", value: listings.length.toString() },
+                  { l: "Listings", v: listings.length.toString() },
+                  { l: "Avg engagement", v: `${avgEngagement}%` },
+                  { l: "Avg price", v: formatPrice(avgPrice) },
+                  { l: "Avg followers", v: formatNumber(avgFollowers) },
                 ].map((s) => (
-                  <div key={s.label} className="flex justify-between">
-                    <span className="text-slate-500">{s.label}</span>
-                    <span className="font-semibold text-slate-900">{s.value}</span>
+                  <div key={s.l} className="flex justify-between">
+                    <span className="text-slate-500">{s.l}</span>
+                    <span className="font-semibold text-slate-900">{s.v}</span>
                   </div>
                 ))}
               </div>
             </div>
-
-            <div className="bg-indigo-50 rounded-xl border border-indigo-100 p-5">
+            <div className="bg-indigo-50 rounded-2xl border border-indigo-100 p-5">
               <h3 className="font-bold text-indigo-900 mb-1 text-sm">Selling a {platform} account?</h3>
-              <p className="text-xs text-indigo-600 mb-3">List for free and reach 50,000+ buyers.</p>
-              <Button size="sm" className="w-full" asChild>
-                <Link href="/sell">List for Free <ArrowRight className="h-3.5 w-3.5 ml-1" /></Link>
-              </Button>
+              <p className="text-xs text-indigo-600 mb-3">Free to list. Reach 50,000+ buyers today.</p>
+              <Link href="/sell" className="flex items-center justify-center gap-1.5 bg-indigo-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-indigo-700 transition-colors">
+                List for Free <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
             </div>
           </aside>
 
-          {/* Listings grid */}
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xl font-bold text-slate-900">
-                {listings.length} {platform} accounts
-              </h2>
-              <Button variant="secondary" size="sm" asChild>
-                <Link href={`/marketplace?platform=${platform}`}>All filters</Link>
-              </Button>
+              <h2 className="text-lg font-bold text-slate-900">{listings.length} {platform} accounts</h2>
+              <Link href={`/marketplace?platform=${platform}`} className="text-sm text-indigo-600 font-medium hover:underline">
+                Filter & sort →
+              </Link>
             </div>
-
             {listings.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                {listings.map((l) => (
-                  <ListingCard key={l.id} listing={l} />
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                {listings.map((l) => <ListingCard key={l.id} listing={l} />)}
               </div>
             ) : (
               <div className="text-center py-20">
-                <div className="text-5xl mb-3">{PLATFORM_EMOJIS[platform]}</div>
+                <div className="text-5xl mb-3">
+                  <PlatformIcon platform={platform} size={48} />
+                </div>
                 <p className="text-slate-500">No {platform} listings right now. Check back soon!</p>
+                <Link href="/sell" className="mt-4 inline-flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-indigo-700 transition-colors">
+                  Be the first to list <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             )}
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );
