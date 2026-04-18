@@ -10,20 +10,20 @@ import {
   Search, CheckCircle, ArrowRight, Clock, Zap,
 } from "lucide-react";
 
-const PLATFORMS = [
-  { name: "TikTok",    slug: "tiktok",    count: 13 },
-  { name: "Instagram", slug: "instagram", count: 12 },
-  { name: "YouTube",   slug: "youtube",   count: 12 },
-  { name: "X",         slug: "x",         count: 7  },
-  { name: "Telegram",  slug: "telegram",  count: 6  },
-  { name: "Pinterest", slug: "pinterest", count: 4  },
-  { name: "LinkedIn",  slug: "linkedin",  count: 4  },
-  { name: "WeChat",    slug: "wechat",    count: 4  },
-  { name: "Discord",   slug: "discord",   count: 4  },
-  { name: "Snapchat",  slug: "snapchat",  count: 3  },
-  { name: "Threads",   slug: "threads",   count: 3  },
-  { name: "Facebook",  slug: "facebook",  count: 5  },
-  { name: "Twitch",    slug: "twitch",    count: 3  },
+const PLATFORMS: { name: string; slug: string }[] = [
+  { name: "TikTok",    slug: "tiktok"    },
+  { name: "Instagram", slug: "instagram" },
+  { name: "YouTube",   slug: "youtube"   },
+  { name: "X",         slug: "x"         },
+  { name: "Telegram",  slug: "telegram"  },
+  { name: "Pinterest", slug: "pinterest" },
+  { name: "LinkedIn",  slug: "linkedin"  },
+  { name: "WeChat",    slug: "wechat"    },
+  { name: "Discord",   slug: "discord"   },
+  { name: "Snapchat",  slug: "snapchat"  },
+  { name: "Threads",   slug: "threads"   },
+  { name: "Facebook",  slug: "facebook"  },
+  { name: "Twitch",    slug: "twitch"    },
 ];
 
 const FEATURED    = SEED_LISTINGS.filter((l) => l.featured).slice(0, 6);
@@ -100,7 +100,6 @@ export default function HomePage() {
                   <PlatformIcon platform={p.name} size={12} />
                 </span>
                 {p.name}
-                <span className="text-slate-400 text-[11px] group-hover:text-slate-600">{p.count}</span>
               </Link>
             ))}
           </div>
