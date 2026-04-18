@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin", "/dashboard", "/api/", "/checkout/"],
       },
     ],
-    sitemap: "https://69swap.com/sitemap.xml",
-    host: "https://69swap.com",
+    sitemap: "https://socialqx.com/sitemap.xml",
+    host: "https://socialqx.com",
   };
 }

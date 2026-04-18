@@ -4,16 +4,16 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "69Swap — Buy & Sell Social Media Accounts Safely", template: "%s | 69Swap" },
+  title: { default: "SocialQX — Buy & Sell Social Media Accounts Safely", template: "%s | SocialQX" },
   description: "The safest marketplace for TikTok, Instagram, YouTube, X, and Telegram accounts. Stripe escrow on every transaction. 4.98★ rating.",
-  metadataBase: new URL("https://69swap.com"),
+  metadataBase: new URL("https://socialqx.com"),
   keywords: ["buy social media accounts", "sell instagram account", "tiktok account marketplace", "youtube channel for sale"],
   openGraph: {
-    siteName: "69Swap",
+    siteName: "SocialQX",
     type: "website",
     locale: "en_US",
   },
-  twitter: { card: "summary_large_image", site: "@69Swap" },
+  twitter: { card: "summary_large_image", site: "@SocialQX" },
   robots: { index: true, follow: true },
 };
 

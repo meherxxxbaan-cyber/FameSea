@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://69swap.com";
-const SITE_NAME = "69Swap";
+const BASE_URL = "https://socialqx.com";
+const SITE_NAME = "SocialQX";
 const DEFAULT_DESCRIPTION = "The safest marketplace to buy and sell TikTok, Instagram, YouTube, X, and Telegram accounts. Stripe escrow on every transaction. 4.98★ average rating.";
 
 export function buildMetadata({
@@ -37,7 +37,7 @@ export function buildMetadata({
       title: fullTitle,
       description,
       images: [ogImage],
-      site: "@69Swap",
+      site: "@SocialQX",
     },
     keywords: [
       "buy social media accounts",

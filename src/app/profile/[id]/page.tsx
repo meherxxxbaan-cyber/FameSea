@@ -29,7 +29,7 @@ const MOCK_REVIEWS = [
   { reviewer: "Buyer4821", rating: 5, text: "Incredibly smooth transaction. Seller transferred everything within 6 hours. Metrics were exactly as described.", date: "2 days ago" },
   { reviewer: "Buyer1193", rating: 5, text: "Professional and responsive. Would absolutely buy from this seller again. Income was spot on.", date: "1 week ago" },
   { reviewer: "Buyer8834", rating: 4, text: "Good seller, slight delay in transfer but communicated well throughout. Account was as described.", date: "2 weeks ago" },
-  { reviewer: "Buyer2291", rating: 5, text: "Best seller on 69Swap. Provided extra analytics I didn't even ask for. Highly recommend.", date: "1 month ago" },
+  { reviewer: "Buyer2291", rating: 5, text: "Best seller on SocialQX. Provided extra analytics I didn't even ask for. Highly recommend.", date: "1 month ago" },
 ];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -37,8 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const user = MOCK_USERS.find((u) => u.id === id);
   if (!user) return {};
   return {
-    title: `${user.name} — Seller Profile | 69Swap`,
-    description: `${user.name} has completed ${user.sales} sales with a ${user.rating}★ rating on 69Swap.`,
+    title: `${user.name} — Seller Profile | SocialQX`,
+    description: `${user.name} has completed ${user.sales} sales with a ${user.rating}★ rating on SocialQX.`,
   };
 }
 

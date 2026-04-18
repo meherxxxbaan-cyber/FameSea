@@ -6,9 +6,9 @@ import { ContactForm } from "@/components/contact-form";
 import { MessageSquare, Mail, Clock, Twitter } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact 69Swap — Support & Inquiries | 69Swap",
-  description: "Get in touch with the 69Swap team. Live chat, email support, and dispute resolution available.",
-  alternates: { canonical: "https://69swap.com/contact" },
+  title: "Contact SocialQX — Support & Inquiries | SocialQX",
+  description: "Get in touch with the SocialQX team. Live chat, email support, and dispute resolution available.",
+  alternates: { canonical: "https://socialqx.com/contact" },
 };
 
 export default function ContactPage() {
@@ -24,8 +24,8 @@ export default function ContactPage() {
           <div className="space-y-4">
             {[
               { icon: <MessageSquare className="h-5 w-5 text-indigo-600" />, title: "Live Chat", desc: "Available Mon–Fri, 9am–6pm EST.", bg: "bg-indigo-50", action: "Start Chat" },
-              { icon: <Mail className="h-5 w-5 text-slate-600" />, title: "Email Support", desc: "support@69swap.com — 4h response.", bg: "bg-slate-50", action: "Send Email" },
-              { icon: <Twitter className="h-5 w-5 text-blue-500" />, title: "Twitter / X", desc: "DM @69Swap for quick questions.", bg: "bg-blue-50", action: "Open X" },
+              { icon: <Mail className="h-5 w-5 text-slate-600" />, title: "Email Support", desc: "support@socialqx.com — 4h response.", bg: "bg-slate-50", action: "Send Email" },
+              { icon: <Twitter className="h-5 w-5 text-blue-500" />, title: "Twitter / X", desc: "DM @SocialQX for quick questions.", bg: "bg-blue-50", action: "Open X" },
             ].map((c) => (
               <div key={c.title} className="bg-white rounded-xl border border-slate-200 p-5">
                 <div className={`w-10 h-10 rounded-xl ${c.bg} flex items-center justify-center mb-3`}>{c.icon}</div>

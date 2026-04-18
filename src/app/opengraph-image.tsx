@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "69Swap — Buy & Sell Social Media Accounts Safely";
+export const alt = "SocialQX — Buy & Sell Social Media Accounts Safely";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

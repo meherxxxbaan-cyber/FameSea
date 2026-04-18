@@ -14,7 +14,7 @@ export function Footer() {
                 <path d="M16 14L10 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
                 <path d="M16 18L22 14" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
               </svg>
-              <span className="font-extrabold text-slate-900">69<span className="text-indigo-600">Swap</span></span>
+              <span className="font-extrabold text-slate-900">Social<span className="text-indigo-600">QX</span></span>
             </div>
             <p className="text-[12.5px] text-slate-500 leading-relaxed">The safest marketplace to buy and sell social media accounts.</p>
             <div className="flex items-center gap-1.5 mt-3 text-[11px] text-slate-400">
@@ -56,7 +56,7 @@ export function Footer() {
           ))}
         </div>
         <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] text-slate-400">© 2025 69Swap.com · All rights reserved</p>
+          <p className="text-[11px] text-slate-400">© 2025 SocialQX.com · All rights reserved</p>
           <p className="text-[11px] text-slate-400">3% fee on completed sales · Free to list · Stripe Escrow</p>
         </div>
       </div>

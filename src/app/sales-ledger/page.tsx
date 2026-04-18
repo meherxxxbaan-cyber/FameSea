@@ -9,9 +9,9 @@ import { CheckCircle, TrendingUp, DollarSign } from "lucide-react";
 
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Sales Ledger — Recent Completed Transfers | 69Swap",
-  description: "Public record of completed account transfers on 69Swap, anonymized for privacy.",
-  alternates: { canonical: "https://69swap.com/sales-ledger" },
+  title: "Sales Ledger — Recent Completed Transfers | SocialQX",
+  description: "Public record of completed account transfers on SocialQX, anonymized for privacy.",
+  alternates: { canonical: "https://socialqx.com/sales-ledger" },
 };
 
 

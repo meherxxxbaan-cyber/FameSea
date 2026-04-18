@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const l = SEED_LISTINGS.find((x) => x.id === id);
   if (!l) return {};
   return {
-    title: `${l.username} — ${l.platform} ${formatNumber(l.followers)} followers | 69Swap`,
+    title: `${l.username} — ${l.platform} ${formatNumber(l.followers)} followers | SocialQX`,
     description: `Buy ${l.username}. ${formatNumber(l.followers)} followers, ${l.engagement_rate}% engagement. Asking ${formatPrice(l.price)}. Escrow protected.`,
   };
 }

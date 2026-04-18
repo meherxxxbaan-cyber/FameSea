@@ -29,7 +29,7 @@ export default function DashboardPage() {
   const [copied, setCopied] = useState(false);
 
   const copyReferral = () => {
-    navigator.clipboard.writeText("https://69swap.com?ref=USER123");
+    navigator.clipboard.writeText("https://socialqx.com?ref=USER123");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -217,7 +217,7 @@ export default function DashboardPage() {
               <p className="text-sm text-slate-500 mb-4">Earn 1% of every sale made by users you refer.</p>
               <div className="flex gap-2">
                 <div className="flex-1 bg-slate-50 rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-600 font-mono truncate">
-                  https://69swap.com?ref=USER123
+                  https://socialqx.com?ref=USER123
                 </div>
                 <Button variant="secondary" size="sm" onClick={copyReferral} className="gap-1 flex-shrink-0">
                   {copied ? <CheckCircle className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}

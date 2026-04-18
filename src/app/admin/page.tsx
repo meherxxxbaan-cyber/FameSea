@@ -46,12 +46,12 @@ export default function AdminPage() {
           <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center">
             <ShieldCheck className="h-4 w-4 text-white" />
           </div>
-          <span className="font-bold text-white">69Swap</span>
+          <span className="font-bold text-white">SocialQX</span>
           <span className="text-slate-500 text-sm">·</span>
           <span className="text-sm text-slate-400">Admin Console</span>
         </div>
         <div className="flex items-center gap-3 text-sm">
-          <span className="text-slate-400">admin@69swap.com</span>
+          <span className="text-slate-400">admin@socialqx.com</span>
           <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white">Sign out</Button>
         </div>
       </header>

@@ -6,16 +6,16 @@ import { ShieldCheck, TrendingUp, Users, DollarSign, Zap, Heart, Globe, ArrowRig
 
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "About 69Swap — Mission, Team & Story | 69Swap",
-  description: "69Swap: $14M+ volume, 50,000+ users. Founded to make social media account trading safe.",
-  alternates: { canonical: "https://69swap.com/about" },
+  title: "About SocialQX — Mission, Team & Story | SocialQX",
+  description: "SocialQX: $14M+ volume, 50,000+ users. Founded to make social media account trading safe.",
+  alternates: { canonical: "https://socialqx.com/about" },
 };
 
 
 
 
 const TEAM = [
-  { name: "Marcus Chen", role: "Co-founder & CEO", bg: "bg-indigo-100 text-indigo-700", initial: "M", bio: "Former Stripe engineer. Built payment escrow systems for 5 years before starting 69Swap." },
+  { name: "Marcus Chen", role: "Co-founder & CEO", bg: "bg-indigo-100 text-indigo-700", initial: "M", bio: "Former Stripe engineer. Built payment escrow systems for 5 years before starting SocialQX." },
   { name: "Aisha Patel", role: "Co-founder & CTO", bg: "bg-violet-100 text-violet-700", initial: "A", bio: "Ex-Meta infrastructure engineer. Scaled platforms to 100M+ users. Obsessed with trust and safety." },
   { name: "Ryan Torres", role: "Head of Trust & Safety", bg: "bg-emerald-100 text-emerald-700", initial: "R", bio: "Former fraud investigator at PayPal. Reviews every dispute personally." },
   { name: "Lea Müller", role: "Head of Growth", bg: "bg-pink-100 text-pink-700", initial: "L", bio: "Built Fameswap to $2M ARR before joining us. Knows this space inside-out." },
@@ -29,7 +29,7 @@ const VALUES = [
 ];
 
 const MILESTONES = [
-  { year: "2022", event: "69Swap founded. First 10 listings go live.", color: "bg-slate-200" },
+  { year: "2022", event: "SocialQX founded. First 10 listings go live.", color: "bg-slate-200" },
   { year: "2023 Q1", event: "Reached 1,000 completed transfers and $1M in volume.", color: "bg-indigo-200" },
   { year: "2023 Q3", event: "Launched Stripe Connect payouts. Dispute resolution team hired.", color: "bg-violet-200" },
   { year: "2024 Q1", event: "$5M volume milestone. 10,000 registered users.", color: "bg-blue-200" },
@@ -55,7 +55,7 @@ export default function AboutPage() {
             We&apos;re building the world&apos;s most trusted social media account marketplace.
           </h1>
           <p className="text-xl text-slate-400 leading-relaxed">
-            Founded in 2022, 69Swap has facilitated $14M+ in account transfers with a 4.98-star average rating. We exist to make buying and selling social accounts safe, fast, and fair.
+            Founded in 2022, SocialQX has facilitated $14M+ in account transfers with a 4.98-star average rating. We exist to make buying and selling social accounts safe, fast, and fair.
           </p>
         </div>
       </section>
@@ -89,7 +89,7 @@ export default function AboutPage() {
               Millions of creators build valuable social media accounts, but the market to buy and sell them has always been risky — full of scams, disputes, and no protection. We changed that.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              69Swap is the infrastructure layer for the social media account market. Stripe-powered escrow means buyers are protected, verified KYC means sellers are accountable, and our 7-day inspection window means every transaction is fair.
+              SocialQX is the infrastructure layer for the social media account market. Stripe-powered escrow means buyers are protected, verified KYC means sellers are accountable, and our 7-day inspection window means every transaction is fair.
             </p>
           </div>
           <div className="space-y-3">
@@ -157,7 +157,7 @@ export default function AboutPage() {
         {/* CTA */}
         <section className="bg-indigo-600 rounded-2xl p-10 text-center">
           <h2 className="text-2xl font-extrabold text-white mb-3">Join the community</h2>
-          <p className="text-indigo-200 mb-6">50,000+ creators trust 69Swap. Ready to buy or sell?</p>
+          <p className="text-indigo-200 mb-6">50,000+ creators trust SocialQX. Ready to buy or sell?</p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Button size="lg" className="bg-white text-indigo-700 hover:bg-indigo-50" asChild>
               <Link href="/marketplace">Browse Accounts <ArrowRight className="h-4 w-4 ml-1" /></Link>

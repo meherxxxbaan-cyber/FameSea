@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
             currency: "usd",
             product_data: {
               name: listingTitle || "Social Media Account",
-              description: "Escrow-protected via 69Swap · 7-day inspection period",
+              description: "Escrow-protected via SocialQX · 7-day inspection period",
             },
             unit_amount: totalInCents,
           },

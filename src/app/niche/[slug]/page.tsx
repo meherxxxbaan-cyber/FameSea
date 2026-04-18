@@ -34,9 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const niche = NICHES.find((n) => n.toLowerCase() === slug.toLowerCase());
   if (!niche) return {};
   return {
-    title: `${niche} Social Media Accounts for Sale | 69Swap`,
+    title: `${niche} Social Media Accounts for Sale | SocialQX`,
     description: `Browse verified ${niche} accounts on TikTok, Instagram, YouTube, X, and Telegram. Escrow-protected. ${NICHE_DESCRIPTIONS[niche]}`,
-    alternates: { canonical: `https://69swap.com/niche/${slug}` },
+    alternates: { canonical: `https://socialqx.com/niche/${slug}` },
   };
 }
 

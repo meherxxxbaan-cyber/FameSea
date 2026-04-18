@@ -6,9 +6,9 @@ import { CheckCircle, X, ArrowRight, DollarSign, ShieldCheck } from "lucide-reac
 
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Fees & Pricing — 3% Platform Fee, Free to List | 69Swap",
-  description: "69Swap charges just 3% on completed sales. Listing is always free.",
-  alternates: { canonical: "https://69swap.com/fees" },
+  title: "Fees & Pricing — 3% Platform Fee, Free to List | SocialQX",
+  description: "SocialQX charges just 3% on completed sales. Listing is always free.",
+  alternates: { canonical: "https://socialqx.com/fees" },
 };
 
 
@@ -61,13 +61,13 @@ export default function FeesPage() {
           <h2 className="font-bold text-slate-900 mb-5 text-lg">Example Transaction</h2>
           <div className="max-w-sm space-y-3 text-sm">
             {[
-              { label: "Account listing price", value: "$10,000", bold: false, green: false },
-              { label: "Platform fee (3%)",     value: "+$300",    bold: false, green: false },
-              { label: "Buyer pays total",       value: "$10,300",  bold: true,  green: false, border: true },
+              { label: "Account listing price", value: "$100", bold: false, green: false },
+              { label: "Platform fee (3%)",     value: "+$3",    bold: false, green: false },
+              { label: "Buyer pays total",       value: "$103",  bold: true,  green: false, border: true },
               { label: "",                       value: "",         bold: false, green: false },
-              { label: "Platform fee (3%)",      value: "-$300",    bold: false, green: false },
-              { label: "Stripe processing (~2%)", value: "-$200",   bold: false, green: false },
-              { label: "Seller receives",         value: "$9,700+", bold: true,  green: true,  border: true },
+              { label: "Platform fee (3%)",      value: "-$3",    bold: false, green: false },
+              { label: "Stripe processing (~2%)", value: "-$2",   bold: false, green: false },
+              { label: "Seller receives",         value: "$95+", bold: true,  green: true,  border: true },
             ].filter(r => r.label).map((row) => (
               <div key={row.label} className={`flex justify-between py-2 ${row.border ? "border-t border-slate-200 mt-1 pt-3" : ""}`}>
                 <span className={row.bold ? "font-semibold text-slate-900" : "text-slate-500"}>{row.label}</span>
@@ -81,14 +81,14 @@ export default function FeesPage() {
         {/* Comparison table */}
         <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-100">
-            <h2 className="font-bold text-slate-900">69Swap vs. Competitors</h2>
+            <h2 className="font-bold text-slate-900">SocialQX vs. Competitors</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-slate-50 text-xs text-slate-400 uppercase tracking-wider">
                 <tr>
                   <th className="text-left py-3 px-6">Feature</th>
-                  <th className="text-center py-3 px-4 text-indigo-600">69Swap</th>
+                  <th className="text-center py-3 px-4 text-indigo-600">SocialQX</th>
                   <th className="text-center py-3 px-4">Fameswap</th>
                   <th className="text-center py-3 px-4">Accs Market</th>
                 </tr>

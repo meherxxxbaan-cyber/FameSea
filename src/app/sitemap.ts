@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { SEED_LISTINGS } from "@/lib/seed-data";
 
-const BASE = "https://69swap.com";
+const BASE = "https://socialqx.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const static_pages: MetadataRoute.Sitemap = [

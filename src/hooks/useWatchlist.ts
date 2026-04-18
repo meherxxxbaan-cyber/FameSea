@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 
-const KEY = "69swap_watchlist";
+const KEY = "socialqx_watchlist";
 
 export function useWatchlist() {
   const [ids, setIds] = useState<Set<string>>(new Set());
