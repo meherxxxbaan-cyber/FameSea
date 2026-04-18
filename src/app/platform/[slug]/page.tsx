@@ -14,7 +14,8 @@ interface Props { params: Promise<{ slug: string }> }
 const PLATFORM_MAP: Record<string, string> = {
   tiktok: "TikTok", instagram: "Instagram", youtube: "YouTube",
   x: "X", telegram: "Telegram", discord: "Discord",
-  facebook: "Facebook", twitch: "Twitch",
+  facebook: "Facebook", twitch: "Twitch", pinterest: "Pinterest",
+  wechat: "WeChat", linkedin: "LinkedIn", snapchat: "Snapchat", threads: "Threads",
 };
 
 const PLATFORM_INFO: Record<string, { tagline: string; description: string; why: string[] }> = {
@@ -25,6 +26,11 @@ const PLATFORM_INFO: Record<string, { tagline: string; description: string; why:
   Telegram:  { tagline: "The subscription revenue machine", description: "Telegram channels with subscription models are pure cash-flow businesses. Crypto signals and finance channels generate $2K–$15K/month in recurring subscriptions.", why: ["Fully recurring subscription revenue", "No algorithm — guaranteed reach", "Premium channel monetization", "Global audience, zero censorship risk"] },
   Discord:   { tagline: "Community ownership at scale", description: "Discord servers with active communities are valuable assets for gaming brands, crypto projects, and online businesses seeking direct audience access.", why: ["Direct community access", "Subscription server monetization", "Bot and integration revenue", "High daily active user rate"] },
   Facebook:  { tagline: "The largest audience in the world", description: "Facebook pages and groups with established audiences offer access to the world's largest social network, especially valuable for the 30+ demographic.", why: ["3 billion+ user platform", "Strong 30–55 demographic", "Facebook Marketplace integration", "Highest local business reach"] },
+  Pinterest: { tagline: "Visual discovery with purchase intent", description: "Pinterest users have 87% purchase intent — the highest of any social platform. Fashion, food, home decor and wedding accounts generate consistent affiliate revenue with evergreen pins that rank on Google for years.", why: ["87% purchase intent — highest on any platform", "Pins rank on Google for years", "Amazon affiliate earns $300-800/mo", "Female 25-45 premium shopping audience"] },
+  WeChat:    { tagline: "The gateway to 1.3 billion Chinese consumers", description: "WeChat Official Accounts are the primary marketing channel for reaching Chinese consumers. Monetization through Mini Programs, brand deals, and subscriptions can generate $1K-5K/month for established accounts.", why: ["1.3 billion user ecosystem", "Mini-program store integration", "Brand deal rates $500-2000/post", "Highest CPM of any Asian platform"] },
+  LinkedIn:  { tagline: "The highest-value B2B audience on earth", description: "LinkedIn audiences are professionals, executives, and decision-makers. CPM rates are 3-5x higher than any other platform. B2B SaaS, finance, and career content accounts generate significant sponsor and course revenue.", why: ["CPM $15-50+ (vs $2-5 on Instagram)", "C-suite and VP audience", "B2B sponsor deals $1K-5K/post", "Newsletter revenue potential"] },
+  Snapchat:  { tagline: "Gen Z's daily habit — 4 billion snaps per day", description: "Snapchat reaches 90%+ of 13-24 year olds in developed markets. Snap Star accounts with established audiences access the Snap Creator Fund and brand partnerships targeting the hardest-to-reach demographic.", why: ["90%+ reach of 13-24 year olds", "Snap Star monetization program", "Brand deal rates growing fast", "Discover show partnership potential"] },
+  Threads:   { tagline: "The fastest-growing platform — get in early", description: "Threads hit 300 million users in record time and is still in explosive growth. Early accounts are building massive followings with very low competition. Meta integration means Instagram cross-posting is built in.", why: ["Fastest-growing platform 2024-2025", "Meta ecosystem — Instagram integration", "Algorithm favoring early accounts", "Very low competition right now"] },
   Twitch:    { tagline: "Live streaming community ownership", description: "Twitch channels with established audiences and affiliate/partner status generate recurring revenue from subscriptions, bits, and brand sponsorships.", why: ["Subscription + bits revenue", "Affiliate/Partner program income", "Very loyal live community", "Gaming brand deal potential"] },
 };
 

@@ -15,7 +15,7 @@ export function formatPrice(n: number): string {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }).format(n);
 }
 
-export const PLATFORMS = ["TikTok", "Instagram", "YouTube", "X", "Telegram", "Discord", "Facebook", "Twitch"] as const;
+export const PLATFORMS = ["TikTok", "Instagram", "YouTube", "X", "Telegram", "Discord", "Facebook", "Twitch", "Pinterest", "WeChat", "LinkedIn", "Snapchat", "Threads"] as const;
 export type Platform = typeof PLATFORMS[number];
 
 export const NICHES = ["Fitness", "Finance", "Beauty", "Gaming", "Travel", "Food", "Tech", "Lifestyle", "Business", "Crypto", "Sports", "Music"] as const;
@@ -30,6 +30,11 @@ export const PLATFORM_GRADIENTS: Record<string, string> = {
   Discord:   "linear-gradient(135deg, #5865F2 0%, #7289DA 100%)",
   Facebook:  "linear-gradient(135deg, #1877F2 0%, #0C4A9E 100%)",
   Twitch:    "linear-gradient(135deg, #6441A4 0%, #9146FF 100%)",
+  Pinterest: "linear-gradient(135deg, #E60023 0%, #B8001A 100%)",
+  WeChat:    "linear-gradient(135deg, #07C160 0%, #05A34F 100%)",
+  LinkedIn:  "linear-gradient(135deg, #0A66C2 0%, #004C8C 100%)",
+  Snapchat:  "linear-gradient(135deg, #FFFC00 0%, #FFC400 100%)",
+  Threads:   "linear-gradient(135deg, #1a1a1a 0%, #333333 100%)",
 };
 
 export const PLATFORM_EMOJIS: Record<string, string> = {

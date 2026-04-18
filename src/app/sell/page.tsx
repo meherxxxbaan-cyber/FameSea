@@ -24,6 +24,7 @@ const STEPS = [
 
 const VALUATION_MULTIPLIERS: Record<string, number> = {
   TikTok: 20, Instagram: 28, YouTube: 36, X: 22, Telegram: 30, Discord: 18, Facebook: 20, Twitch: 24,
+  Pinterest: 24, WeChat: 22, LinkedIn: 32, Snapchat: 18, Threads: 16,
 };
 
 interface FormState {
@@ -135,7 +136,7 @@ export default function SellPage() {
                           <div className="text-left">
                             <div className="text-white font-bold">{p}</div>
                             <div className="text-white/60 text-xs">
-                              {({TikTok: "Shop eligible", Instagram: "Brand deals", YouTube: "AdSense", X: "Subscriptions", Telegram: "Channels", Discord: "Community", Facebook: "Pages/Groups", Twitch: "Live streaming"} as Record<string,string>)[p]}
+                              {({TikTok: "Shop eligible", Instagram: "Brand deals", YouTube: "AdSense", X: "Subscriptions", Telegram: "Channels", Discord: "Community", Facebook: "Pages/Groups", Twitch: "Live streaming", Pinterest: "Affiliate", WeChat: "Official Account", LinkedIn: "B2B audience", Snapchat: "Gen Z reach", Threads: "Fast growing"} as Record<string,string>)[p]}
                             </div>
                           </div>
                           <div className="ml-auto">

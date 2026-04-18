@@ -16,7 +16,12 @@ const PLATFORMS = [
   { name: "YouTube",   slug: "youtube",   count: 12 },
   { name: "X",         slug: "x",         count: 7  },
   { name: "Telegram",  slug: "telegram",  count: 6  },
+  { name: "Pinterest", slug: "pinterest", count: 4  },
+  { name: "LinkedIn",  slug: "linkedin",  count: 4  },
+  { name: "WeChat",    slug: "wechat",    count: 4  },
   { name: "Discord",   slug: "discord",   count: 4  },
+  { name: "Snapchat",  slug: "snapchat",  count: 3  },
+  { name: "Threads",   slug: "threads",   count: 3  },
   { name: "Facebook",  slug: "facebook",  count: 5  },
   { name: "Twitch",    slug: "twitch",    count: 3  },
 ];
