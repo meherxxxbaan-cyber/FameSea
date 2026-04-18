@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PlatformIcon } from "@/components/platform-icons";
 import { SEED_LISTINGS } from "@/lib/seed-data";
 import { formatPrice, formatNumber } from "@/lib/utils";
 import {
@@ -133,7 +134,7 @@ export default function DashboardPage() {
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style={{ background: l.gradient }}>
-                            {l.emoji}
+                            <PlatformIcon platform={l.platform} size={16} />
                           </div>
                           <div>
                             <div className="font-medium text-slate-900 text-sm">{l.username}</div>
@@ -164,7 +165,7 @@ export default function DashboardPage() {
             {MY_PURCHASES.map((l) => (
               <div key={l.id} className="bg-white rounded-xl border border-slate-200 p-5 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style={{ background: l.gradient }}>
-                  {l.emoji}
+                  <PlatformIcon platform={l.platform} size={16} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">

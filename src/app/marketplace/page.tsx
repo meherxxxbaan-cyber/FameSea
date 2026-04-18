@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { SEED_LISTINGS } from "@/lib/seed-data";
 import type { Listing } from "@/lib/seed-data";
+import { PlatformIcon } from "@/components/platform-icons";
 import { PLATFORMS, NICHES, PLATFORM_GRADIENTS, PLATFORM_EMOJIS } from "@/lib/utils";
 import type { Platform } from "@/lib/utils";
 import { Search, SlidersHorizontal, X, GitCompare, ChevronDown } from "lucide-react";
@@ -99,9 +100,9 @@ export default function MarketplacePage() {
               <label key={p} className="flex items-center gap-2.5 cursor-pointer group">
                 <input type="checkbox" checked={checked} onChange={() => togglePlatform(p)}
                   className="w-4 h-4 rounded accent-indigo-600" />
-                <div className="w-4 h-4 rounded flex items-center justify-center text-[10px] flex-shrink-0"
+                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ background: PLATFORM_GRADIENTS[p as Platform] }}>
-                  {PLATFORM_EMOJIS[p as Platform]}
+                  <PlatformIcon platform={p} size={11} />
                 </div>
                 <span className="text-sm text-slate-700 group-hover:text-slate-900">{p}</span>
               </label>

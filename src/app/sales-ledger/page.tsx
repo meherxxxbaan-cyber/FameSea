@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
+import { PlatformIcon } from "@/components/platform-icons";
 import { SEED_LISTINGS } from "@/lib/seed-data";
 import { formatPrice, formatNumber, PLATFORM_GRADIENTS, PLATFORM_EMOJIS } from "@/lib/utils";
 import type { Platform } from "@/lib/utils";
@@ -100,7 +101,7 @@ export default function SalesLedgerPage() {
                           className="w-8 h-8 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
                           style={{ background: PLATFORM_GRADIENTS[txn.listing.platform as Platform] }}
                         >
-                          {PLATFORM_EMOJIS[txn.listing.platform as Platform]}
+                          <PlatformIcon platform={txn.listing.platform} size={16} />
                         </div>
                         <div>
                           <div className="text-sm font-medium text-slate-900">{txn.listing.username}</div>
