@@ -24,8 +24,8 @@ export interface Listing {
   seller_sales: number;
   created_at: string;
   featured: boolean;
-  isSeed: boolean;
-  listingStatus: "active" | "pending_verification" | "sold";
+  isSeed?: boolean;
+  listingStatus?: "active" | "pending_verification" | "sold";
   gradient: string;
   emoji: string;
   niche_emoji: string;
