@@ -62,8 +62,8 @@ export default function HowItWorksPage() {
           {[
             { icon: <ShieldCheck className="h-5 w-5 text-indigo-500" />, v: "100%", label: "Escrow Protected" },
             { icon: <Clock className="h-5 w-5 text-amber-500" />, v: "7 Days", label: "Inspection Period" },
-            { icon: <Star className="h-5 w-5 fill-amber-400 text-amber-400" />, v: "4.98★", label: "Avg Rating" },
-            { icon: <DollarSign className="h-5 w-5 text-emerald-500" />, v: "$14M+", label: "Volume Traded" },
+            { icon: <Star className="h-5 w-5 fill-amber-400 text-amber-400" />, v: "New", label: "Safe & Secure" },
+            { icon: <DollarSign className="h-5 w-5 text-emerald-500" />, v: "Escrow", label: "Every Transaction" },
           ].map((s) => (
             <div key={s.label} className="flex flex-col items-center gap-1">
               {s.icon}
@@ -166,7 +166,7 @@ export default function HowItWorksPage() {
 
         <section className="bg-indigo-600 rounded-2xl p-10 text-center">
           <h2 className="text-3xl font-extrabold text-white mb-3">Ready to get started?</h2>
-          <p className="text-indigo-200 mb-8">Join 50,000+ buyers and sellers on the safest social media account marketplace.</p>
+          <p className="text-indigo-200 mb-8">Join buyers and sellers on the safest social media account marketplace.</p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Button size="xl" className="bg-white text-indigo-700 hover:bg-indigo-50" asChild><Link href="/marketplace">Browse Accounts</Link></Button>
             <Button size="xl" className="bg-indigo-500 text-white hover:bg-indigo-400 border border-indigo-400" asChild><Link href="/sell">Sell an Account</Link></Button>
