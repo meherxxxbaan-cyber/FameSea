@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const platform = PLATFORM_MAP[slug.toLowerCase()];
   if (!platform) return {};
   return {
-    title: `${platform} Accounts for Sale | SocialQX`,
+    title: `${platform} Accounts for Sale | FameSea`,
     description: `Buy verified ${platform} accounts. Stripe escrow on every transaction. Browse listings by niche, followers, and price.`,
   };
 }
