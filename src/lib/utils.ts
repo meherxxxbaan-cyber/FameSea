@@ -15,7 +15,7 @@ export function formatPrice(n: number): string {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }).format(n);
 }
 
-export const PLATFORMS = ["TikTok", "Instagram", "YouTube", "X", "Telegram", "Discord", "Facebook", "Twitch", "Pinterest", "WeChat", "LinkedIn", "Snapchat", "Threads"] as const;
+export const PLATFORMS = ["TikTok", "Instagram", "YouTube", "X", "Telegram", "Facebook", "Twitch", "Pinterest", "Snapchat", "Threads"] as const;
 export type Platform = typeof PLATFORMS[number];
 
 export const NICHES = ["Fitness", "Finance", "Beauty", "Gaming", "Travel", "Food", "Tech", "Lifestyle", "Business", "Crypto", "Sports", "Music"] as const;
