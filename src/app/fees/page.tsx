@@ -6,9 +6,9 @@ import { CheckCircle, X, ArrowRight, DollarSign, ShieldCheck } from "lucide-reac
 
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Fees & Pricing — 5% Platform Fee, Free to List | SocialQX",
-  description: "SocialQX charges just 5% on completed sales. Listing is always free.",
-  alternates: { canonical: "https://socialqx.com/fees" },
+  title: "Fees & Pricing — 5% Platform Fee, Free to List | FameSea",
+  description: "FameSea charges just 5% on completed sales. Listing is always free.",
+  alternates: { canonical: "https://famesea.com/fees" },
 };
 
 
@@ -81,21 +81,21 @@ export default function FeesPage() {
         {/* Comparison table */}
         <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-100">
-            <h2 className="font-bold text-slate-900">SocialQX vs. Competitors</h2>
+            <h2 className="font-bold text-slate-900">FameSea vs. Competitors</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-slate-50 text-xs text-slate-400 uppercase tracking-wider">
                 <tr>
                   <th className="text-left py-3 px-6">Feature</th>
-                  <th className="text-center py-3 px-4 text-indigo-600">SocialQX</th>
+                  <th className="text-center py-3 px-4 text-indigo-600">FameSea</th>
                   <th className="text-center py-3 px-4">Fameswap</th>
                   <th className="text-center py-3 px-4">Accs Market</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { feature: "Listing fee",          us: "Free",   a: "$19/mo", b: "Free" },
+                  { feature: "Listing fee",          us: "Free",   a: "Free", b: "Free" },
                   { feature: "Platform fee",          us: "5%",     a: "15%",   b: "5-10%" },
                   { feature: "Escrow protection",     us: true,     a: false,   b: false },
                   { feature: "Stripe Connect payouts",us: true,     a: false,   b: false },
