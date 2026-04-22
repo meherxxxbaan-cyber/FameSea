@@ -10,8 +10,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "How It Works — Escrow-Protected Account Trading | SocialQX",
-  description: "Learn how SocialQX's Stripe escrow protects buyers and sellers. 7-day inspection period and 4.98-star trust rating.",
+  title: "How It Works — Escrow-Protected Account Trading | FameSea",
+  description: "Learn how FameSea's Stripe escrow protects buyers and sellers. 7-day inspection period and 4.98-star trust rating.",
   alternates: { canonical: "https://socialqx.com/how-it-works" },
 };
 
@@ -32,7 +32,7 @@ const SELLER_STEPS = [
 const FAQS = [
   { q: "What if the account doesn't match the listing?", a: "Open a dispute within 7 days. Our Trust & Safety team investigates and, if valid, issues a full refund." },
   { q: "How long does escrow hold last?", a: "Funds are held until you confirm receipt or for 7 days auto-release if no dispute is filed." },
-  { q: "What is the platform fee?", a: "SocialQX charges buyers a 3% fee on top of the listing price. Listing is free for sellers. No monthly fees." },
+  { q: "What is the platform fee?", a: "FameSea charges buyers a 5% fee on top of the listing price. Listing is free for sellers. No monthly fees." },
   { q: "How do sellers get paid?", a: "Sellers connect a Stripe account from their dashboard. Payouts (97% of sale) transfer directly to their bank." },
   { q: "Are sellers verified?", a: "All sellers are KYC-verified via Stripe Connect before listing. Verified Income badges mean we've confirmed stated earnings." },
   { q: "Can I make an offer below asking price?", a: "Yes. Every listing has a minimum offer floor set by the seller. Submit any offer above that floor." },
@@ -49,7 +49,7 @@ export default function HowItWorksPage() {
             <ShieldCheck className="h-4 w-4" /> Stripe Escrow Protection
           </div>
           <h1 className="text-5xl font-extrabold text-slate-900 tracking-tight mb-5">
-            How <span className="text-indigo-600">SocialQX</span> Works
+            How <span className="text-indigo-600">FameSea</span> Works
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Every transaction is protected by Stripe escrow. Buyers get a 7-day inspection period. Sellers are KYC-verified. The safest way to trade social media accounts.
@@ -131,7 +131,7 @@ export default function HowItWorksPage() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {[
               { label: "Buyer pays", icon: "💳", sub: "Stripe Checkout" },
-              { label: "Funds held", icon: "🔒", sub: "Escrow (SocialQX)" },
+              { label: "Funds held", icon: "🔒", sub: "Escrow (FameSea)" },
               { label: "Account transferred", icon: "🔑", sub: "Seller → Buyer" },
               { label: "Buyer confirms", icon: "✅", sub: "7-day window" },
               { label: "Seller paid", icon: "💸", sub: "97% of sale" },
