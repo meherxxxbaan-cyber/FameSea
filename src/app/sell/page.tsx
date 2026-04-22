@@ -28,8 +28,8 @@ const STEPS = [
 const PLATFORM_BASE_CPF: Record<string, number> = {
   // $ per 1K followers (Western audience baseline)
   TikTok: 8, Instagram: 14, YouTube: 18, X: 6, Telegram: 20,
-  Discord: 5, Facebook: 5, Twitch: 10, Pinterest: 8,
-  WeChat: 12, LinkedIn: 22, Snapchat: 6, Threads: 4,
+  Facebook: 5, Twitch: 10, Pinterest: 8,
+  Snapchat: 6, Threads: 4,
 };
 
 const LOCATION_MULTIPLIER: Record<string, number> = {
@@ -65,8 +65,8 @@ function estimateValue(platform: string, followers: number, monthlyIncome: numbe
   // Income multiple (12-24x monthly income depending on platform)
   const incomeMultipliers: Record<string, number> = {
     YouTube: 22, LinkedIn: 28, Telegram: 18, TikTok: 16,
-    Instagram: 20, X: 14, Discord: 12, Facebook: 12,
-    Pinterest: 18, WeChat: 16, Twitch: 14, Snapchat: 10, Threads: 10,
+    Instagram: 20, X: 14, Facebook: 12,
+    Pinterest: 18, Twitch: 14, Snapchat: 10, Threads: 10,
   };
   const incMult = incomeMultipliers[platform] || 15;
   const incomeValue = monthlyIncome * incMult * locMult;
@@ -192,7 +192,7 @@ export default function SellPage() {
                           <div className="text-left">
                             <div className="text-white font-bold">{p}</div>
                             <div className="text-white/60 text-xs">
-                              {({TikTok: "Shop eligible", Instagram: "Brand deals", YouTube: "AdSense", X: "Subscriptions", Telegram: "Channels", Discord: "Community", Facebook: "Pages/Groups", Twitch: "Live streaming", Pinterest: "Affiliate", WeChat: "Official Account", LinkedIn: "B2B audience", Snapchat: "Gen Z reach", Threads: "Fast growing"} as Record<string,string>)[p]}
+                              {({TikTok: "Shop eligible", Instagram: "Brand deals", YouTube: "AdSense", X: "Subscriptions", Telegram: "Channels", Facebook: "Pages/Groups", Twitch: "Live streaming", Pinterest: "Affiliate", Snapchat: "Gen Z reach", Threads: "Fast growing"} as Record<string,string>)[p]}
                             </div>
                           </div>
                           <div className="ml-auto">

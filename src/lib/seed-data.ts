@@ -521,7 +521,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
   },
   // ─── WeChat ───────────────────────────────────────────────────────────────
   {
-    id:"listing-54", platform:"WeChat", username:"FashionTrendsHK", niche:"Lifestyle",
+    id:"listing-54", platform:"REMOVED", username:"FashionTrendsHK", niche:"Lifestyle",
     followers:45000, monthly_income:1800, engagement_rate:8.4, price:3600, minimum_offer:2900,
     status:"active", verified_income:true, tiktok_shop_eligible:false, monetized:true,
     location:"Hong Kong", age_years:4, avg_views:38000,
@@ -530,7 +530,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
     created_at:"2025-01-06T09:00:00Z", featured:true,
   },
   {
-    id:"listing-55", platform:"WeChat", username:"InvestmentPro.CN", niche:"Finance",
+    id:"listing-55", platform:"REMOVED", username:"InvestmentPro.CN", niche:"Finance",
     followers:28000, monthly_income:2400, engagement_rate:11.2, price:4800, minimum_offer:3900,
     status:"active", verified_income:true, tiktok_shop_eligible:false, monetized:true,
     location:"China", age_years:5, avg_views:24000,
@@ -539,7 +539,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
     created_at:"2025-01-10T12:00:00Z", featured:false,
   },
   {
-    id:"listing-56", platform:"WeChat", username:"FoodLifestyleSH", niche:"Food",
+    id:"listing-56", platform:"REMOVED", username:"FoodLifestyleSH", niche:"Food",
     followers:62000, monthly_income:1100, engagement_rate:7.8, price:2200, minimum_offer:1800,
     status:"active", verified_income:true, tiktok_shop_eligible:false, monetized:true,
     location:"China", age_years:3, avg_views:52000,
@@ -548,7 +548,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
     created_at:"2025-01-16T14:00:00Z", featured:false,
   },
   {
-    id:"listing-57", platform:"WeChat", username:"TravelChinaGuide", niche:"Travel",
+    id:"listing-57", platform:"REMOVED", username:"TravelChinaGuide", niche:"Travel",
     followers:38000, monthly_income:860, engagement_rate:6.9, price:1700, minimum_offer:1400,
     status:"active", verified_income:false, tiktok_shop_eligible:false, monetized:true,
     location:"China", age_years:4, avg_views:32000,
@@ -558,7 +558,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
   },
   // ─── LinkedIn ─────────────────────────────────────────────────────────────
   {
-    id:"listing-58", platform:"LinkedIn", username:"SarahChenCMO", niche:"Business",
+    id:"listing-58", platform:"REMOVED", username:"SarahChenCMO", niche:"Business",
     followers:48000, monthly_income:1200, engagement_rate:4.8, price:3800, minimum_offer:3100,
     status:"active", verified_income:true, tiktok_shop_eligible:false, monetized:true,
     location:"United States", age_years:5, avg_views:180000,
@@ -567,7 +567,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
     created_at:"2025-01-05T10:00:00Z", featured:false,
   },
   {
-    id:"listing-59", platform:"LinkedIn", username:"StartupFounderDaily", niche:"Business",
+    id:"listing-59", platform:"REMOVED", username:"StartupFounderDaily", niche:"Business",
     followers:92000, monthly_income:1800, engagement_rate:6.2, price:5200, minimum_offer:4200,
     status:"active", verified_income:true, tiktok_shop_eligible:false, monetized:true,
     location:"United States", age_years:4, avg_views:420000,
@@ -576,7 +576,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
     created_at:"2025-01-02T09:00:00Z", featured:true,
   },
   {
-    id:"listing-60", platform:"LinkedIn", username:"AIProductInsights", niche:"Tech",
+    id:"listing-60", platform:"REMOVED", username:"AIProductInsights", niche:"Tech",
     followers:34000, monthly_income:1400, engagement_rate:5.4, price:4100, minimum_offer:3300,
     status:"active", verified_income:true, tiktok_shop_eligible:false, monetized:true,
     location:"United Kingdom", age_years:3, avg_views:156000,
@@ -585,7 +585,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
     created_at:"2025-01-13T11:00:00Z", featured:false,
   },
   {
-    id:"listing-61", platform:"LinkedIn", username:"FinanceCareerPro", niche:"Finance",
+    id:"listing-61", platform:"REMOVED", username:"FinanceCareerPro", niche:"Finance",
     followers:67000, monthly_income:980, engagement_rate:4.1, price:2900, minimum_offer:2300,
     status:"active", verified_income:true, tiktok_shop_eligible:false, monetized:true,
     location:"United Arab Emirates", age_years:4, avg_views:290000,
@@ -660,7 +660,7 @@ const RAW: Omit<Listing, "gradient"|"emoji"|"niche_emoji">[] = [
   },
 ];
 
-export const SEED_LISTINGS: Listing[] = RAW.map((l) => ({
+export const SEED_LISTINGS: Listing[] = RAW.filter((l) => !["WeChat","LinkedIn","Discord"].includes(l.platform)).map((l) => ({
   ...l,
   isSeed: true,
   listingStatus: "pending_verification" as const,
