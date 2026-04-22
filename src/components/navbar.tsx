@@ -32,7 +32,7 @@ export function Navbar() {
             <path d="M16 18L22 14" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
           </svg>
           <span className="text-[18px] font-extrabold text-slate-900 tracking-tight">
-            Social<span className="text-indigo-600">QX</span>
+            Fame<span className="text-indigo-600">Sea</span>
           </span>
         </Link>
 

@@ -42,7 +42,7 @@ export default function HomePage() {
           <div className="flex justify-center mb-5">
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[13px] font-semibold px-4 py-1.5 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              3,842 accounts safely transferred · $14M+ in volume
+              New marketplace · Zero fees for early sellers · Launching now
             </div>
           </div>
 
@@ -51,7 +51,7 @@ export default function HomePage() {
             <span className="text-indigo-600">Buy an audience today.</span>
           </h1>
           <p className="text-center text-[17px] text-slate-500 mb-8 max-w-xl mx-auto leading-relaxed">
-            Browse 5,000+ verified TikTok, Instagram, YouTube, X and Telegram accounts.
+            Browse verified TikTok, Instagram, YouTube, X and Telegram accounts.
             Every transaction is protected by Stripe escrow.
           </p>
 
@@ -72,7 +72,7 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6">
             {[
               { icon: <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />, text: "Stripe Escrow Protected"  },
-              { icon: <Star className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />, text: "4.98★ Average Rating" },
+              { icon: <Star className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />, text: "Lowest Fees in Market" },
               { icon: <Clock className="h-3.5 w-3.5 text-indigo-500" />, text: "7-Day Buyer Inspection"     },
               { icon: <CheckCircle className="h-3.5 w-3.5 text-blue-500" />, text: "All Sellers KYC Verified" },
             ].map((s) => (
@@ -111,9 +111,9 @@ export default function HomePage() {
         {/* ─── STATS ROW ────────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { icon: <DollarSign className="h-5 w-5 text-emerald-500" />, bg: "bg-emerald-50", val: "$14M+",  label: "Total Volume",       sub: "Traded on platform"     },
-            { icon: <TrendingUp className="h-5 w-5 text-indigo-500" />,  bg: "bg-indigo-50",  val: "3,842",  label: "Completed Transfers", sub: "Buyers confirmed"       },
-            { icon: <Star className="h-5 w-5 text-amber-400" />,         bg: "bg-amber-50",   val: "4.98★",  label: "Avg Rating",          sub: "From 1,200+ reviews"    },
+            { icon: <DollarSign className="h-5 w-5 text-emerald-500" />, bg: "bg-emerald-50", val: "0%",     label: "Seller Fees",         sub: "Free to list forever"     },
+            { icon: <TrendingUp className="h-5 w-5 text-indigo-500" />,  bg: "bg-indigo-50",  val: "3%",     label: "Buyer Fee Only",      sub: "Lowest in the market"       },
+            { icon: <Star className="h-5 w-5 text-amber-400" />,         bg: "bg-amber-50",   val: "7-Day",  label: "Buyer Protection",    sub: "Full refund guarantee"    },
             { icon: <Lock className="h-5 w-5 text-slate-500" />,         bg: "bg-slate-50",   val: "100%",   label: "Escrow Protected",    sub: "Every transaction"      },
           ].map((s) => (
             <div key={s.label} className="bg-white rounded-2xl border border-slate-200 p-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
@@ -183,7 +183,7 @@ export default function HomePage() {
           <div className="relative flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
               <h2 className="text-2xl font-extrabold text-white mb-1">Have an account to sell?</h2>
-              <p className="text-indigo-200 text-[15px]">Free to list · 3% only on sale · 50,000+ buyers waiting</p>
+              <p className="text-indigo-200 text-[15px]">Free to list · 3% only on sale · Escrow protected</p>
             </div>
             <Link href="/sell"
               className="flex items-center gap-2 bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl hover:bg-indigo-50 transition-colors flex-shrink-0 text-[15px]">
