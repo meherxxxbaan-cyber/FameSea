@@ -4,7 +4,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "SocialQX — Buy & Sell Social Media Accounts Safely", template: "%s | SocialQX" },
+  title: { default: "FameSea — Buy & Sell Social Media Accounts Safely", template: "%s | FameSea" },
   description: "The safest marketplace for TikTok, Instagram, YouTube, X, and Telegram accounts. Stripe escrow on every transaction. 4.98★ rating.",
   metadataBase: new URL("https://socialqx.com"),
   keywords: ["buy social media accounts", "sell instagram account", "tiktok account marketplace", "youtube channel for sale"],
